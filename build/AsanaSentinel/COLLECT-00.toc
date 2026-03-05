@@ -1,0 +1,201 @@
+([('AsanaSentinel.exe',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\build\\AsanaSentinel\\AsanaSentinel.exe',
+   'EXECUTABLE'),
+  ('python314.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\python314.dll',
+   'BINARY'),
+  ('_decimal.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('select.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('_zstd.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_zstd.pyd',
+   'EXTENSION'),
+  ('_lzma.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_wmi.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_wmi.pyd',
+   'EXTENSION'),
+  ('_uuid.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_uuid.pyd',
+   'EXTENSION'),
+  ('_zoneinfo.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_zoneinfo.pyd',
+   'EXTENSION'),
+  ('pydantic_core\\_pydantic_core.cp314-win_amd64.pyd',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic_core\\_pydantic_core.cp314-win_amd64.pyd',
+   'EXTENSION'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('libcrypto-3.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\libcrypto-3.dll',
+   'BINARY'),
+  ('libssl-3.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\libssl-3.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('static\\assets\\index-J6wKduhP.js',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-J6wKduhP.js',
+   'DATA'),
+  ('static\\assets\\index-aReUIglr.css',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-aReUIglr.css',
+   'DATA'),
+  ('static\\index.html',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\index.html',
+   'DATA'),
+  ('static\\vite.svg',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\vite.svg',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\INSTALLER',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\licenses\\LICENSE',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\licenses\\LICENSE',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
+   'ipsum.txt',
+   'DATA'),
+  ('click-8.3.1.dist-info\\INSTALLER',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\INSTALLER',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\INSTALLER',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\METADATA',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\METADATA',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\licenses\\LICENSE',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\licenses\\LICENSE',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\REQUESTED',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\REQUESTED',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\RECORD',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\RECORD',
+   'DATA'),
+  ('click-8.3.1.dist-info\\WHEEL',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
+   'DATA'),
+  ('click-8.3.1.dist-info\\METADATA',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
+   'DATA'),
+  ('click-8.3.1.dist-info\\RECORD',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
+   'DATA'),
+  ('click-8.3.1.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\licenses\\LICENSE.txt',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\WHEEL',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\WHEEL',
+   'DATA'),
+  ('base_library.zip',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\build\\AsanaSentinel\\base_library.zip',
+   'DATA')],)

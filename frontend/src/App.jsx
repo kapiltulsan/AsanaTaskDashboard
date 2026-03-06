@@ -7,6 +7,13 @@ import Settings from './pages/Settings';
 import FilterOverlay from './components/FilterOverlay';
 import { useFilters } from './context/FilterContext';
 
+/**
+ * Root Application Component
+ * 
+ * Sets up the main layout structure, routing context (via react-router-dom),
+ * and the topmost global navigation header. Mounts the global FilterOverlay
+ * which listens to the application-wide context.
+ */
 const App = () => {
   const location = useLocation();
   const { setIsFilterOverlayOpen, activeFilters, syncing, triggerSync } = useFilters();
@@ -41,8 +48,8 @@ const App = () => {
             onClick={() => setIsFilterOverlayOpen(true)}
             id="btn-global-filter"
             className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all ${activeFilters.length > 0
-                ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
-                : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-800'
+              ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+              : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-800'
               }`}
           >
             <Filter size={13} />
@@ -95,12 +102,22 @@ const App = () => {
   );
 };
 
+/**
+ * Navigation Tab sub-component.
+ * Renders a stylized link item in the bottom navigation bar of the application header.
+ * 
+ * @param {Object} props
+ * @param {string} props.to - The URL path to route to.
+ * @param {boolean} props.active - Optional flag forcing the active visual state.
+ * @param {React.ReactNode} props.icon - An icon component (e.g., Lucide icon) to display.
+ * @param {string} props.label - The text label for the navigation tab.
+ */
 const NavTab = ({ to, active, icon, label }) => (
   <Link
     to={to}
     className={`h-full px-4 flex items-center gap-2 text-[12px] font-semibold tracking-wide border-b-2 transition-all ${active
-        ? 'border-indigo-600 text-indigo-700'
-        : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'
+      ? 'border-indigo-600 text-indigo-700'
+      : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'
       }`}
   >
     {icon}

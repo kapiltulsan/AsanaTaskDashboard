@@ -14,14 +14,19 @@ from typing import Optional, List, Dict, Any
 import logging
 import os
 import json
+import sys
 
 from backend.db_manager import DatabaseManager
 from backend.asana_engine import AsanaSyncEngine
 from backend.reporting_engine import ReportingEngine
+from backend.ai_engine import AIEngine
 
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Global sync state
+sync_state = {"in_progress": False, "last_sync": None, "error": None}
 
 app = FastAPI(title="Asana Sentinel Workspace API", version="1.0.0")
 
@@ -132,8 +137,10 @@ def validate_pat(request: PATValidationRequest, db: DatabaseManager = Depends(ge
         workspaces = engine.get_workspaces()
         return {"status": "success", "workspaces": workspaces}
     except Exception as e:
-        logger.error(f"PAT Validation failed: {e}")
-        raise HTTPException(status_code=401, detail="Invalid Personal Access Token.")
+        logger.error(f"PAT Validation failed: {e}", exc_info=True)
+        if isinstance(e, HTTPException):
+            raise e
+        raise HTTPException(status_code=401, detail=f"Validation failed: {str(e)}")
 
 @app.post("/api/asana/projects")
 def discover_projects(request: ProjectDiscoveryRequest, db: DatabaseManager = Depends(get_db)):
@@ -225,7 +232,100 @@ def get_task_stories(task_gid: str, db: DatabaseManager = Depends(get_db)):
     """
     return db.get_stories_by_task(task_gid)
 
-# ==================== CUSTOM DASHBOARD TILES ====================
+@app.get("/api/tasks/{task_gid}/summary")
+def get_ai_summary(task_gid: str, force: bool = False, db: DatabaseManager = Depends(get_db)):
+    """
+    Retrieves a smart AI summary for a task. 
+    If a summary is cached in the DB, it returns it unless force=True.
+    Otherwise, it gathers task data and comments and generates a new one.
+    """
+    # Check cache first (Validate format: Must be a dict with TPM keys)
+    task = next((t for t in db.get_all_tasks() if t['gid'] == task_gid), None)
+    if task and task.get('smart_summary') and not force:
+        try:
+            summary = json.loads(task['smart_summary'])
+            if isinstance(summary, dict) and "pulse" in summary:
+                logger.info(f"Valid TPM summary found in cache for {task_gid}")
+                return {"status": "success", "summary": summary}
+            else:
+                logger.info(f"Legacy/invalid summary found for {task_gid}, forcing regeneration.")
+        except:
+            logger.info(f"Parsing failed for summary of {task_gid}, forcing regeneration.")
+            pass
+
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found in cache.")
+
+    # Gather data for AI (Enriched with Date and Author)
+    stories = db.get_stories_by_task(task_gid)
+    story_texts = []
+    for s in stories:
+        if s.get('text'):
+            date_str = s.get('created_at', 'Unknown Date')[:10]  # Extract YYYY-MM-DD
+            author = s.get('created_by', 'Stakeholder')
+            story_texts.append(f"[{date_str}] {author}: {s['text']}")
+    
+    # Extract status card for AI context
+    status_card = None
+    if task.get('notes'):
+        notes = task['notes']
+        marker = '"status_card"'
+        start_search = 0
+        while True:
+            marker_idx = notes.find(marker, start_search)
+            if marker_idx == -1: break
+            
+            # Find matching braces
+            open_brace_idx = notes.rfind('{', 0, marker_idx)
+            if open_brace_idx != -1:
+                brace_count = 0
+                for i in range(open_brace_idx, len(notes)):
+                    if notes[i] == '{': brace_count += 1
+                    elif notes[i] == '}': brace_count -= 1
+                    if brace_count == 0:
+                        try:
+                            candidate = json.loads(notes[open_brace_idx:i+1])
+                            if 'status_card' in candidate:
+                                status_card = candidate['status_card']
+                                break
+                        except: pass
+                        break
+            if status_card: break
+            start_search = marker_idx + 1
+
+    # Initialize AI Engine
+    engine = AIEngine()
+    summary_json = engine.generate_smart_summary(
+        task_name=task['name'],
+        description=task['notes'],
+        stories=story_texts,
+        status_card=status_card
+    )
+
+    if summary_json:
+        try:
+            parsed = json.loads(summary_json)
+            # Ensure it's a dict with the new pulse key
+            if isinstance(parsed, dict) and "pulse" in parsed:
+                db.update_task_summary(task_gid, summary_json)
+                logger.info(f"SUCCESS: Sending TPM summary for {task_gid}")
+                return {"status": "success", "summary": parsed}
+            else:
+                logger.warning(f"AI returned unexpected format for {task_gid}: {summary_json[:100]}")
+        except Exception as e:
+            logger.error(f"Failed to parse AI summary JSON: {e}")
+
+    # Fallback/Error state with placeholders that explain the state
+    logger.warning(f"FAILURE: Returning fallback for {task_gid}")
+    return {
+        "status": "error", 
+        "message": "AI generation failed or returned invalid format.",
+        "summary": {
+            "pulse": {"current": ["AI failed to generate pulse updates."], "previous": []},
+            "impact": {"wins": [], "losses": ["Analysis engine encountered an error."]},
+            "critical_path": {"dependencies": [], "risks": ["Check raw comments for details."]}
+        }
+    }
 
 @app.get("/api/tiles")
 def list_tiles(db: DatabaseManager = Depends(get_db)):
@@ -354,6 +454,9 @@ def run_sync_background(db: DatabaseManager):
         logger.error("Cannot sync: Missing PAT or Project GID.")
         return
         
+    sync_state["in_progress"] = True
+    sync_state["error"] = None
+    
     try:
         engine = AsanaSyncEngine(pat=pat, project_gid=project_gid, db_manager=db)
         engine.sync_project_tasks()
@@ -376,8 +479,13 @@ def run_sync_background(db: DatabaseManager):
             "improving": True,  # Placeholder logic
             "slow": False
         })
+        from datetime import datetime
+        sync_state["last_sync"] = datetime.now().isoformat()
     except Exception as e:
         logger.error(f"Sync failed: {e}")
+        sync_state["error"] = str(e)
+    finally:
+        sync_state["in_progress"] = False
 
 @app.post("/api/sync")
 def trigger_sync(background_tasks: BackgroundTasks, db: DatabaseManager = Depends(get_db)):
@@ -403,6 +511,11 @@ def trigger_sync(background_tasks: BackgroundTasks, db: DatabaseManager = Depend
     background_tasks.add_task(run_sync_background, db)
     return {"status": "sync_started", "message": "Synchronization is running in the background."}
 
+@app.get("/api/sync/status")
+def get_sync_status():
+    """Returns the current background synchronization status."""
+    return sync_state
+
 @app.put("/api/tasks/{task_gid}")
 def update_task(task_gid: str, task_update: TaskUpdate, background_tasks: BackgroundTasks, db: DatabaseManager = Depends(get_db)):
     """
@@ -424,7 +537,11 @@ def update_task(task_gid: str, task_update: TaskUpdate, background_tasks: Backgr
 # ==================== STATIC FILE SERVING ====================
 
 # Path where PyInstaller places data files, or local dev path
-static_dir = os.path.join(os.path.dirname(__file__), "static")
+if getattr(sys, 'frozen', False):
+    # PyInstaller creates a temp folder and stores path in _MEIPASS
+    static_dir = os.path.join(sys._MEIPASS, "static")
+else:
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
 
 if os.path.exists(static_dir):
     app.mount("/assets", StaticFiles(directory=os.path.join(static_dir, "assets")), name="assets")
@@ -445,4 +562,6 @@ if os.path.exists(static_dir):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)
+    # Use the app object directly for compatibility with PyInstaller --onefile
+    # and disable reload which is not supported/needed in a bundled executable.
+    uvicorn.run(app, host="127.0.0.1", port=8000)

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
-import { Server, Key, ExternalLink, CheckCircle, ChevronRight, ChevronLeft, Info, Search, Settings as SettingsIcon, Plus, Trash2, LayoutGrid, Filter, Cpu, Activity, AlertTriangle, Lightbulb, HelpCircle, Copy, Check } from 'lucide-react';
+import { Server, Key, ExternalLink, CheckCircle, ChevronRight, ChevronLeft, Info, Search, Settings as SettingsIcon, Plus, Trash2, LayoutGrid, Filter, Cpu, Activity, AlertTriangle, Lightbulb, HelpCircle, Copy, Check, ChevronDown } from 'lucide-react';
 import { useFilters } from '../context/FilterContext';
 import TileManager from '../components/TileManager';
 
 const Settings = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
     const [pat, setPat] = useState('');
+    const [showPATInstructions, setShowPATInstructions] = useState(false);
     const [workspaces, setWorkspaces] = useState([]);
     const [selectedWorkspace, setSelectedWorkspace] = useState('');
     const [projects, setProjects] = useState([]);
@@ -106,7 +107,7 @@ const Settings = () => {
                     </div>
                     {activeTab === 'setup' && (
                         <div className="flex gap-1.5">
-                            {[1, 2, 3].map(i => (
+                            {[2, 3].map(i => (
                                 <div key={i} className={`w-2 h-2 rounded-full ${step >= i ? 'bg-indigo-300' : 'bg-indigo-900'}`} />
                             ))}
                         </div>
@@ -144,46 +145,37 @@ const Settings = () => {
 
                     {activeTab === 'setup' && (
                         <>
-                            {/* STEP 1: INSTRUCTIONS */}
-                            {step === 1 && (
-                                <div className="space-y-4 relative group/step1">
-                                    <div className="absolute top-0 right-0 text-slate-200 text-[6px] font-mono opacity-0 group-hover/step1:opacity-100 transition-opacity">[MOD-CFG-STEP1]</div>
-                                    <h2 className="text-xs font-black text-slate-900 tracking-wider flex items-center gap-2">
-                                        <Info size={12} />
-                                        INTEGRATION PROTOCOL
-                                    </h2>
-                                    <p className="text-[11px] text-slate-500 leading-normal">Follow these steps to establish a secure local connection to your Asana project.</p>
-
-                                    <div className="border border-slate-200 bg-slate-50 p-4 space-y-3 font-mono text-[10px] text-slate-600">
-                                        <div className="flex gap-3">
-                                            <span className="text-sky-600 font-bold">01.</span>
-                                            <span>Visit <a href="https://app.asana.com/0/developer-console" target="_blank" rel="noreferrer" className="text-sky-600 underline">Developer Console</a></span>
-                                        </div>
-                                        <div className="flex gap-3">
-                                            <span className="text-sky-600 font-bold">02.</span>
-                                            <span>Navigate to "Personal Access Token"</span>
-                                        </div>
-                                        <div className="flex gap-3">
-                                            <span className="text-sky-600 font-bold">03.</span>
-                                            <span>Click "+ Create new token" & copy GID string</span>
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        onClick={() => setStep(2)}
-                                        id="btn-continue-step2"
-                                        className="w-full bg-slate-900 text-white py-2 text-[11px] font-bold tracking-widest hover:bg-slate-800 transition-all uppercase"
-                                    >
-                                        CONTINUE TO TOKEN ENTRY
-                                    </button>
-                                </div>
-                            )}
-
-                            {/* STEP 2: TOKEN ENTRY */}
+                            {/* STEP 2: TOKEN ENTRY (now step 1 visually) */}
                             {step === 2 && (
                                 <div className="space-y-4 relative group/step2">
                                     <div className="absolute top-0 right-0 text-slate-200 text-[6px] font-mono opacity-0 group-hover/step2:opacity-100 transition-opacity">[MOD-CFG-STEP2]</div>
                                     <h2 className="text-xs font-black text-slate-900 tracking-wider">MANDATORY AUTHENTICATION</h2>
+
+                                    {/* Collapsible instructions accordion */}
+                                    <button
+                                        onClick={() => setShowPATInstructions(v => !v)}
+                                        className="flex items-center gap-2 text-[10px] font-semibold text-sky-600 hover:text-sky-800 transition-colors"
+                                    >
+                                        <Info size={11} />
+                                        {showPATInstructions ? 'Hide' : 'How to get your Personal Access Token'}
+                                    </button>
+                                    {showPATInstructions && (
+                                        <div className="border border-slate-200 bg-slate-50 p-4 space-y-3 font-mono text-[10px] text-slate-600 rounded">
+                                            <div className="flex gap-3">
+                                                <span className="text-sky-600 font-bold">01.</span>
+                                                <span>Visit <a href="https://app.asana.com/0/developer-console" target="_blank" rel="noreferrer" className="text-sky-600 underline">Developer Console</a></span>
+                                            </div>
+                                            <div className="flex gap-3">
+                                                <span className="text-sky-600 font-bold">02.</span>
+                                                <span>Navigate to "Personal Access Token"</span>
+                                            </div>
+                                            <div className="flex gap-3">
+                                                <span className="text-sky-600 font-bold">03.</span>
+                                                <span>Click "+ Create new token" &amp; copy GID string</span>
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="space-y-1">
                                         <label className="text-[9px] font-bold text-slate-400 tracking-widest uppercase">Personal Access Token</label>
                                         <input
@@ -191,22 +183,20 @@ const Settings = () => {
                                             id="input-pat"
                                             value={pat}
                                             onChange={(e) => setPat(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && pat && !loading && handleVerifyPAT()}
                                             placeholder="PASTE TOKEN HERE..."
                                             className="w-full px-3 py-2 border border-slate-300 font-mono text-xs focus:ring-1 focus:ring-sky-500 outline-none"
                                         />
                                     </div>
 
-                                    <div className="flex gap-2 pt-2">
-                                        <button onClick={() => setStep(1)} id="btn-back-step1" className="flex-1 border border-slate-300 text-slate-500 py-2 text-[10px] font-bold tracking-widest hover:bg-slate-50 uppercase">BACK</button>
-                                        <button
-                                            onClick={handleVerifyPAT}
-                                            id="btn-verify-pat"
-                                            disabled={!pat || loading}
-                                            className="flex-[2] bg-slate-900 text-white py-2 text-[10px] font-bold tracking-widest hover:bg-slate-800 disabled:opacity-50 uppercase"
-                                        >
-                                            {loading ? 'VALIDATING...' : 'VERIFY & DISCOVER'}
-                                        </button>
-                                    </div>
+                                    <button
+                                        onClick={handleVerifyPAT}
+                                        id="btn-verify-pat"
+                                        disabled={!pat || loading}
+                                        className="w-full bg-slate-900 text-white py-2 text-[10px] font-bold tracking-widest hover:bg-slate-800 disabled:opacity-50 uppercase"
+                                    >
+                                        {loading ? 'VALIDATING...' : 'VERIFY & DISCOVER'}
+                                    </button>
                                 </div>
                             )}
 
@@ -220,15 +210,18 @@ const Settings = () => {
                                         {workspaces.length > 1 && (
                                             <div className="space-y-1">
                                                 <label className="text-[9px] font-bold text-slate-400 tracking-widest">WORKSPACE</label>
-                                                <select
-                                                    value={selectedWorkspace}
-                                                    id="select-workspace"
-                                                    onChange={(e) => setSelectedWorkspace(e.target.value)}
-                                                    className="w-full p-2 border border-slate-300 bg-white text-[11px] outline-none"
-                                                >
-                                                    <option value="">CHOOSE TARGET WORKSPACE</option>
-                                                    {workspaces.map(w => <option key={w.gid} value={w.gid}>{w.name}</option>)}
-                                                </select>
+                                                <div className="relative">
+                                                    <select
+                                                        value={selectedWorkspace}
+                                                        id="select-workspace"
+                                                        onChange={(e) => setSelectedWorkspace(e.target.value)}
+                                                        className="w-full appearance-none p-2 pr-8 border border-slate-300 bg-white text-[11px] outline-none cursor-pointer"
+                                                    >
+                                                        <option value="">CHOOSE TARGET WORKSPACE</option>
+                                                        {workspaces.map(w => <option key={w.gid} value={w.gid}>{w.name}</option>)}
+                                                    </select>
+                                                    <ChevronLeft size={13} className="absolute right-2.5 top-1/2 -translate-y-1/2 -rotate-90 text-slate-400 pointer-events-none" />
+                                                </div>
                                             </div>
                                         )}
 

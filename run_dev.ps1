@@ -3,6 +3,10 @@
 
 Write-Host "🚀 Launching Asana Sentinel Workspace..." -ForegroundColor Cyan
 
+# Change directory
+cd "C:\Users\Kapil Tulsan\OneDrive - Kapil R Tulsan\PyCharms\AsanaTaskDashboard\AsanaTaskDashboard"
+
+
 # 1. Start the Backend in a separate window
 Write-Host "Starting Python Backend (FastAPI)..."
 Start-Process powershell -ArgumentList "-NoExit", "-Command", ".\venv\Scripts\activate; py -m backend.main"

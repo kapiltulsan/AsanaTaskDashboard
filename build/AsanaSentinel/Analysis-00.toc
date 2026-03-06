@@ -1,7 +1,7 @@
 (['C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\main.py'],
  ['C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-  'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend'],
+  'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard'],
  ['uvicorn.logging',
   'uvicorn.loops',
   'uvicorn.loops.auto',
@@ -25,13 +25,13 @@
  {},
  0,
  [],
- [('static\\assets\\index-J6wKduhP.js',
+ [('static\\assets\\index-CwMkP9lY.js',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-J6wKduhP.js',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-CwMkP9lY.js',
    'DATA'),
-  ('static\\assets\\index-aReUIglr.css',
+  ('static\\assets\\index-Ma4Q8ydC.css',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-aReUIglr.css',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-Ma4Q8ydC.css',
    'DATA'),
   ('static\\index.html',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
@@ -478,22 +478,6 @@
   ('importlib.metadata._meta',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\importlib\\metadata\\_meta.py',
-   'PYMODULE'),
-  ('json',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\__init__.py',
-   'PYMODULE'),
-  ('json.encoder',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\encoder.py',
-   'PYMODULE'),
-  ('json.decoder',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\decoder.py',
-   'PYMODULE'),
-  ('json.scanner',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\scanner.py',
    'PYMODULE'),
   ('__future__',
    'C:\\Users\\Kapil '
@@ -1523,6 +1507,10 @@
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py',
    'PYMODULE'),
+  ('setuptools._vendor.backports',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\__init__.py',
+   'PYMODULE'),
   ('setuptools._vendor.backports.tarfile.compat.py38',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\py38.py',
@@ -1530,10 +1518,6 @@
   ('setuptools._vendor.backports.tarfile.compat',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\__init__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.backports',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\__init__.py',
    'PYMODULE'),
   ('setuptools.glob',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
@@ -2051,10 +2035,6 @@
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\uvicorn\\logging.py',
    'PYMODULE'),
-  ('_py_abc',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_py_abc.py',
-   'PYMODULE'),
   ('_py_warnings',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_py_warnings.py',
@@ -2066,6 +2046,10 @@
   ('stringprep',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_py_abc.py',
    'PYMODULE'),
   ('uvicorn',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
@@ -2110,6 +2094,478 @@
   ('uvicorn.main',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\uvicorn\\main.py',
+   'PYMODULE'),
+  ('backend.reporting_engine',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\reporting_engine.py',
+   'PYMODULE'),
+  ('backend',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\__init__.py',
+   'PYMODULE'),
+  ('backend.asana_engine',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\asana_engine.py',
+   'PYMODULE'),
+  ('asana.rest',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\rest.py',
+   'PYMODULE'),
+  ('urllib3',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.contrib',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.connection',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\connection.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.response',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\response.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.request',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\request.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.fetch',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\fetch.py',
+   'PYMODULE'),
+  ('urllib3.util.url',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\url.py',
+   'PYMODULE'),
+  ('urllib3.util',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.util.wait',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\wait.py',
+   'PYMODULE'),
+  ('urllib3.util.ssl_',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\ssl_.py',
+   'PYMODULE'),
+  ('urllib3.util.ssltransport',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\ssltransport.py',
+   'PYMODULE'),
+  ('urllib3.util.response',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\response.py',
+   'PYMODULE'),
+  ('idna',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\__init__.py',
+   'PYMODULE'),
+  ('idna.package_data',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\package_data.py',
+   'PYMODULE'),
+  ('idna.intranges',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\intranges.py',
+   'PYMODULE'),
+  ('idna.core',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\core.py',
+   'PYMODULE'),
+  ('idna.uts46data',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\uts46data.py',
+   'PYMODULE'),
+  ('idna.idnadata',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\idnadata.py',
+   'PYMODULE'),
+  ('urllib3.util.util',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\util.py',
+   'PYMODULE'),
+  ('urllib3.util.connection',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\connection.py',
+   'PYMODULE'),
+  ('urllib3.connection',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\connection.py',
+   'PYMODULE'),
+  ('urllib3.util.ssl_match_hostname',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\ssl_match_hostname.py',
+   'PYMODULE'),
+  ('urllib3.http2.probe',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\http2\\probe.py',
+   'PYMODULE'),
+  ('urllib3.http2',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\http2\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.http2.connection',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\http2\\connection.py',
+   'PYMODULE'),
+  ('urllib3.util.timeout',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\timeout.py',
+   'PYMODULE'),
+  ('urllib3.util.retry',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\retry.py',
+   'PYMODULE'),
+  ('urllib3.util.request',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\request.py',
+   'PYMODULE'),
+  ('urllib3.response',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\response.py',
+   'PYMODULE'),
+  ('urllib3.poolmanager',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\poolmanager.py',
+   'PYMODULE'),
+  ('urllib3.util.proxy',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\util\\proxy.py',
+   'PYMODULE'),
+  ('urllib3._request_methods',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\_request_methods.py',
+   'PYMODULE'),
+  ('urllib3.filepost',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\filepost.py',
+   'PYMODULE'),
+  ('urllib3.fields',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\fields.py',
+   'PYMODULE'),
+  ('urllib3.connectionpool',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py',
+   'PYMODULE'),
+  ('urllib3._version',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\_version.py',
+   'PYMODULE'),
+  ('urllib3._collections',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\_collections.py',
+   'PYMODULE'),
+  ('urllib3._base_connection',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\_base_connection.py',
+   'PYMODULE'),
+  ('urllib3.exceptions',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\urllib3\\exceptions.py',
+   'PYMODULE'),
+  ('six',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\six.py',
+   'PYMODULE'),
+  ('certifi',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\certifi\\__init__.py',
+   'PYMODULE'),
+  ('certifi.core',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\certifi\\core.py',
+   'PYMODULE'),
+  ('asana',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\__init__.py',
+   'PYMODULE'),
+  ('asana.configuration',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\configuration.py',
+   'PYMODULE'),
+  ('asana.api_client',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api_client.py',
+   'PYMODULE'),
+  ('dateutil.parser',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\parser\\__init__.py',
+   'PYMODULE'),
+  ('dateutil.parser.isoparser',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\parser\\isoparser.py',
+   'PYMODULE'),
+  ('dateutil.tz',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\tz\\__init__.py',
+   'PYMODULE'),
+  ('dateutil.tz.tz',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\tz\\tz.py',
+   'PYMODULE'),
+  ('dateutil.zoneinfo',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\zoneinfo\\__init__.py',
+   'PYMODULE'),
+  ('dateutil.rrule',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\rrule.py',
+   'PYMODULE'),
+  ('dateutil.easter',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\easter.py',
+   'PYMODULE'),
+  ('dateutil._common',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\_common.py',
+   'PYMODULE'),
+  ('dateutil.relativedelta',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\relativedelta.py',
+   'PYMODULE'),
+  ('dateutil.tz.win',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\tz\\win.py',
+   'PYMODULE'),
+  ('dateutil.tz._factories',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\tz\\_factories.py',
+   'PYMODULE'),
+  ('dateutil.tz._common',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\tz\\_common.py',
+   'PYMODULE'),
+  ('dateutil.parser._parser',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\parser\\_parser.py',
+   'PYMODULE'),
+  ('dateutil',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\__init__.py',
+   'PYMODULE'),
+  ('dateutil._version',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\_version.py',
+   'PYMODULE'),
+  ('asana.api.workspaces_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\workspaces_api.py',
+   'PYMODULE'),
+  ('asana.api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\__init__.py',
+   'PYMODULE'),
+  ('asana.pagination.page_iterator',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\pagination\\page_iterator.py',
+   'PYMODULE'),
+  ('asana.pagination',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\pagination\\__init__.py',
+   'PYMODULE'),
+  ('asana.pagination.event_iterator',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\pagination\\event_iterator.py',
+   'PYMODULE'),
+  ('asana.api.workspace_memberships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\workspace_memberships_api.py',
+   'PYMODULE'),
+  ('asana.api.webhooks_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\webhooks_api.py',
+   'PYMODULE'),
+  ('asana.api.users_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\users_api.py',
+   'PYMODULE'),
+  ('asana.api.user_task_lists_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\user_task_lists_api.py',
+   'PYMODULE'),
+  ('asana.api.typeahead_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\typeahead_api.py',
+   'PYMODULE'),
+  ('asana.api.time_tracking_entries_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\time_tracking_entries_api.py',
+   'PYMODULE'),
+  ('asana.api.time_periods_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\time_periods_api.py',
+   'PYMODULE'),
+  ('asana.api.teams_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\teams_api.py',
+   'PYMODULE'),
+  ('asana.api.team_memberships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\team_memberships_api.py',
+   'PYMODULE'),
+  ('asana.api.tasks_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\tasks_api.py',
+   'PYMODULE'),
+  ('asana.api.task_templates_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\task_templates_api.py',
+   'PYMODULE'),
+  ('asana.api.tags_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\tags_api.py',
+   'PYMODULE'),
+  ('asana.api.stories_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\stories_api.py',
+   'PYMODULE'),
+  ('asana.api.status_updates_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\status_updates_api.py',
+   'PYMODULE'),
+  ('asana.api.sections_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\sections_api.py',
+   'PYMODULE'),
+  ('asana.api.rules_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\rules_api.py',
+   'PYMODULE'),
+  ('asana.api.reactions_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\reactions_api.py',
+   'PYMODULE'),
+  ('asana.api.projects_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\projects_api.py',
+   'PYMODULE'),
+  ('asana.api.project_templates_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\project_templates_api.py',
+   'PYMODULE'),
+  ('asana.api.project_statuses_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\project_statuses_api.py',
+   'PYMODULE'),
+  ('asana.api.project_memberships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\project_memberships_api.py',
+   'PYMODULE'),
+  ('asana.api.project_briefs_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\project_briefs_api.py',
+   'PYMODULE'),
+  ('asana.api.portfolios_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\portfolios_api.py',
+   'PYMODULE'),
+  ('asana.api.portfolio_memberships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\portfolio_memberships_api.py',
+   'PYMODULE'),
+  ('asana.api.organization_exports_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\organization_exports_api.py',
+   'PYMODULE'),
+  ('asana.api.memberships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\memberships_api.py',
+   'PYMODULE'),
+  ('asana.api.jobs_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\jobs_api.py',
+   'PYMODULE'),
+  ('asana.api.goals_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\goals_api.py',
+   'PYMODULE'),
+  ('asana.api.goal_relationships_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\goal_relationships_api.py',
+   'PYMODULE'),
+  ('asana.api.exports_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\exports_api.py',
+   'PYMODULE'),
+  ('asana.api.events_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\events_api.py',
+   'PYMODULE'),
+  ('asana.api.custom_types_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\custom_types_api.py',
+   'PYMODULE'),
+  ('asana.api.custom_fields_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\custom_fields_api.py',
+   'PYMODULE'),
+  ('asana.api.custom_field_settings_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\custom_field_settings_api.py',
+   'PYMODULE'),
+  ('asana.api.batch_api_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\batch_api_api.py',
+   'PYMODULE'),
+  ('asana.api.audit_log_api_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\audit_log_api_api.py',
+   'PYMODULE'),
+  ('asana.api.attachments_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\attachments_api.py',
+   'PYMODULE'),
+  ('asana.api.allocations_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\allocations_api.py',
+   'PYMODULE'),
+  ('asana.api.access_requests_api',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\asana\\api\\access_requests_api.py',
+   'PYMODULE'),
+  ('backend.db_manager',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\db_manager.py',
+   'PYMODULE'),
+  ('sqlite3',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sqlite3\\__init__.py',
+   'PYMODULE'),
+  ('sqlite3.dump',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sqlite3\\dump.py',
+   'PYMODULE'),
+  ('sqlite3.__main__',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sqlite3\\__main__.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sqlite3\\dbapi2.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\json\\scanner.py',
    'PYMODULE'),
   ('logging',
    'C:\\Users\\Kapil '
@@ -2731,30 +3187,6 @@
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\anyio\\_core\\_sockets.py',
    'PYMODULE'),
-  ('idna',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\__init__.py',
-   'PYMODULE'),
-  ('idna.package_data',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\package_data.py',
-   'PYMODULE'),
-  ('idna.intranges',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\intranges.py',
-   'PYMODULE'),
-  ('idna.core',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\core.py',
-   'PYMODULE'),
-  ('idna.uts46data',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\uts46data.py',
-   'PYMODULE'),
-  ('idna.idnadata',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\idna\\idnadata.py',
-   'PYMODULE'),
   ('anyio._core._resources',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\anyio\\_core\\_resources.py',
@@ -3075,6 +3507,10 @@
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_uuid.pyd',
    'EXTENSION'),
+  ('_sqlite3.pyd',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_sqlite3.pyd',
+   'EXTENSION'),
   ('_zoneinfo.pyd',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_zoneinfo.pyd',
@@ -3102,16 +3538,20 @@
   ('VCRUNTIME140_1.dll',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('sqlite3.dll',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\sqlite3.dll',
    'BINARY')],
  [],
  [],
- [('static\\assets\\index-J6wKduhP.js',
+ [('static\\assets\\index-CwMkP9lY.js',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-J6wKduhP.js',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-CwMkP9lY.js',
    'DATA'),
-  ('static\\assets\\index-aReUIglr.css',
+  ('static\\assets\\index-Ma4Q8ydC.css',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-aReUIglr.css',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\assets\\index-Ma4Q8ydC.css',
    'DATA'),
   ('static\\index.html',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
@@ -3121,78 +3561,90 @@
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\backend\\static\\vite.svg',
    'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
-   'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
    'DATA'),
   ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\INSTALLER',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\INSTALLER',
    'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\RECORD',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\REQUESTED',
    'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\top_level.txt',
    'DATA'),
   ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\licenses\\LICENSE',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\licenses\\LICENSE',
    'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
+  ('setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\METADATA',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.7.1.dist-info\\WHEEL',
    'DATA'),
   ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
    'ipsum.txt',
    'DATA'),
-  ('click-8.3.1.dist-info\\INSTALLER',
+  ('certifi\\cacert.pem',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\certifi\\cacert.pem',
    'DATA'),
-  ('pydantic-2.12.5.dist-info\\INSTALLER',
+  ('certifi\\py.typed',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\INSTALLER',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\certifi\\py.typed',
    'DATA'),
-  ('pydantic-2.12.5.dist-info\\METADATA',
+  ('dateutil\\zoneinfo\\dateutil-zoneinfo.tar.gz',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\METADATA',
-   'DATA'),
-  ('pydantic-2.12.5.dist-info\\licenses\\LICENSE',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\licenses\\LICENSE',
-   'DATA'),
-  ('pydantic-2.12.5.dist-info\\REQUESTED',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\REQUESTED',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\dateutil\\zoneinfo\\dateutil-zoneinfo.tar.gz',
    'DATA'),
   ('pydantic-2.12.5.dist-info\\RECORD',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\RECORD',
    'DATA'),
-  ('click-8.3.1.dist-info\\WHEEL',
-   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
-   'DATA'),
   ('click-8.3.1.dist-info\\METADATA',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\METADATA',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\METADATA',
+   'DATA'),
+  ('click-8.3.1.dist-info\\INSTALLER',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\licenses\\LICENSE',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\licenses\\LICENSE',
+   'DATA'),
+  ('click-8.3.1.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\licenses\\LICENSE.txt',
    'DATA'),
   ('click-8.3.1.dist-info\\RECORD',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
    'DATA'),
-  ('click-8.3.1.dist-info\\licenses\\LICENSE.txt',
+  ('pydantic-2.12.5.dist-info\\REQUESTED',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
-   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\licenses\\LICENSE.txt',
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\REQUESTED',
+   'DATA'),
+  ('click-8.3.1.dist-info\\WHEEL',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
+   'DATA'),
+  ('pydantic-2.12.5.dist-info\\INSTALLER',
+   'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
+   'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\venv\\Lib\\site-packages\\pydantic-2.12.5.dist-info\\INSTALLER',
    'DATA'),
   ('pydantic-2.12.5.dist-info\\WHEEL',
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
@@ -3202,29 +3654,9 @@
    'C:\\Users\\Kapil Tulsan\\OneDrive - Kapil R '
    'Tulsan\\PyCharms\\AsanaTaskDashboard\\AsanaTaskDashboard\\build\\AsanaSentinel\\base_library.zip',
    'DATA')],
- [('traceback',
+ [('warnings',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\traceback.py',
-   'PYMODULE'),
-  ('types',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\types.py',
-   'PYMODULE'),
-  ('_collections_abc',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_collections_abc.py',
-   'PYMODULE'),
-  ('posixpath',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\posixpath.py',
-   'PYMODULE'),
-  ('sre_parse',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_parse.py',
-   'PYMODULE'),
-  ('linecache',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\linecache.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\warnings.py',
    'PYMODULE'),
   ('re._parser',
    'C:\\Users\\Kapil '
@@ -3246,61 +3678,65 @@
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\re\\__init__.py',
    'PYMODULE'),
+  ('types',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\types.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\posixpath.py',
+   'PYMODULE'),
   ('ntpath',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ntpath.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_parse.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\operator.py',
+   'PYMODULE'),
+  ('stat',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\stat.py',
    'PYMODULE'),
   ('sre_compile',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_compile.py',
    'PYMODULE'),
-  ('reprlib',
+  ('io',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\reprlib.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\io.py',
    'PYMODULE'),
-  ('weakref',
+  ('_collections_abc',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\weakref.py',
-   'PYMODULE'),
-  ('abc',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\abc.py',
-   'PYMODULE'),
-  ('enum',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\enum.py',
-   'PYMODULE'),
-  ('functools',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\functools.py',
-   'PYMODULE'),
-  ('warnings',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\warnings.py',
-   'PYMODULE'),
-  ('keyword',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\keyword.py',
-   'PYMODULE'),
-  ('copyreg',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\copyreg.py',
-   'PYMODULE'),
-  ('_weakrefset',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_weakrefset.py',
-   'PYMODULE'),
-  ('codecs',
-   'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\codecs.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_collections_abc.py',
    'PYMODULE'),
   ('locale',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\locale.py',
    'PYMODULE'),
-  ('stat',
+  ('genericpath',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\stat.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\genericpath.py',
+   'PYMODULE'),
+  ('enum',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\enum.py',
+   'PYMODULE'),
+  ('heapq',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\heapq.py',
+   'PYMODULE'),
+  ('linecache',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\linecache.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\copyreg.py',
    'PYMODULE'),
   ('encodings.zlib_codec',
    'C:\\Users\\Kapil '
@@ -3794,29 +4230,45 @@
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\encodings\\__init__.py',
    'PYMODULE'),
-  ('heapq',
+  ('weakref',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\heapq.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\weakref.py',
    'PYMODULE'),
-  ('operator',
+  ('traceback',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\operator.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\traceback.py',
    'PYMODULE'),
-  ('io',
+  ('codecs',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\io.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\codecs.py',
    'PYMODULE'),
-  ('genericpath',
+  ('reprlib',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\genericpath.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\reprlib.py',
+   'PYMODULE'),
+  ('abc',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\abc.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\functools.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\keyword.py',
+   'PYMODULE'),
+  ('collections',
+   'C:\\Users\\Kapil '
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\collections\\__init__.py',
    'PYMODULE'),
   ('sre_constants',
    'C:\\Users\\Kapil '
    'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sre_constants.py',
    'PYMODULE'),
-  ('collections',
+  ('_weakrefset',
    'C:\\Users\\Kapil '
-   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\collections\\__init__.py',
+   'Tulsan\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_weakrefset.py',
    'PYMODULE'),
   ('os',
    'C:\\Users\\Kapil '

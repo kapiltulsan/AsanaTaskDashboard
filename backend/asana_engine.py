@@ -2,6 +2,7 @@ import time
 import logging
 from typing import Optional, List, Dict
 from datetime import datetime
+import concurrent.futures
 
 # You must install the official Asana library: pip install asana
 import asana
@@ -112,14 +113,17 @@ class AsanaSyncEngine:
     def sync_project_tasks(self):
         """
         Fetches all tasks in the configured project and saves them to the local SQLite database.
-        It pulls down core fields and custom fields, and sequentially synchronizes stories
-        for each fetched task.
+        It pulls down core fields and custom fields, and synchronizes stories
+        for modified or new tasks in parallel.
         """
         logger.info(f"Starting Task Sync for Project: {self.project_gid}")
         
         opts = {
             'opt_fields': "name,completed,assignee.name,due_on,notes,html_notes,custom_fields,modified_at,permalink_url"
         }
+        
+        # Get existing tasks to check modified_at
+        existing_tasks = {t['gid']: t.get('modified_at') for t in self.db.get_all_tasks()}
         
         # We need to exhaust the generator/iterator returned by the SDK
         response = self._execute_with_backoff(
@@ -131,33 +135,59 @@ class AsanaSyncEngine:
         if not response:
             return
 
+        tasks_to_sync_stories = []
         sync_count = 0
+        skipped_count = 0
         
         # Iterate over results
         for task in response:
             sync_count += 1
-            assignee_name = task.get('assignee', {}).get('name') if task.get('assignee') else None
+            
+            # Use to_dict() if available for reliable mapping
+            t_dict = task.to_dict() if hasattr(task, 'to_dict') else task
+            if not isinstance(t_dict, dict):
+                logger.warning(f"Unexpected task type: {type(task)}")
+                continue
+
+            gid = t_dict.get('gid')
+            modified_at = t_dict.get('modified_at')
+            
+            if not gid:
+                logger.warning(f"Skipping task with missing GID: {t_dict}")
+                continue
+
+            # Incremental sync check: if task exists and hasn't changed, skip story sync
+            if gid in existing_tasks and existing_tasks[gid] == modified_at:
+                skipped_count += 1
+                continue
+
+            # Safely extract assignee name
+            assignee = t_dict.get('assignee')
+            assignee_name = assignee.get('name') if isinstance(assignee, dict) else None
             
             task_data = {
-                'gid': task.get('gid'),
-                'name': task.get('name', 'Untitled Task'),
-                'completed': task.get('completed', False),
+                'gid': gid,
+                'name': t_dict.get('name', 'Untitled Task'),
+                'completed': t_dict.get('completed', False),
                 'assignee': assignee_name,
-                'due_on': task.get('due_on'),
-                'notes': task.get('notes'),
-                'html_notes': task.get('html_notes'),
-                'custom_fields': task.get('custom_fields', {}),
-                'permalink_url': task.get('permalink_url')
+                'due_on': t_dict.get('due_on'),
+                'notes': t_dict.get('notes'),
+                'html_notes': t_dict.get('html_notes'),
+                'custom_fields': t_dict.get('custom_fields', {}),
+                'permalink_url': t_dict.get('permalink_url'),
+                'modified_at': modified_at
             }
             
             # Upsert into local SQLite
             self.db.upsert_task(task_data)
+            tasks_to_sync_stories.append(gid)
             
-            # Sync stories for this task
-            self.sync_task_stories(task_data['gid'])
-            
-            # Artificial sleep to avoid aggressive spiking if scanning an entire large project
-            time.sleep(0.1) 
+        logger.info(f"Task data synced ({sync_count} total, {skipped_count} skipped). Fetching stories for {len(tasks_to_sync_stories)} tasks...")
+
+        # Parallel story sync using ThreadPoolExecutor
+        if tasks_to_sync_stories:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+                executor.map(self.sync_task_stories, tasks_to_sync_stories)
             
         logger.info(f"Task Sync Complete. Synced {sync_count} tasks.")
 
@@ -184,20 +214,30 @@ class AsanaSyncEngine:
             return
             
         for story in response:
+            s_dict = story.to_dict() if hasattr(story, 'to_dict') else story
+            if not isinstance(s_dict, dict):
+                continue
+
+            sgid = s_dict.get('gid')
+            stype = s_dict.get('type')
+            
             # We are only interested in human or meaningful system comments
-            if story.get('type') != 'comment':
+            if stype != 'comment':
                 continue
                 
-            text = story.get('text', '')
+            text = s_dict.get('text', '')
             intelligence = self._process_story_intelligence(text)
             
+            created_by = s_dict.get('created_by')
+            created_by_name = created_by.get('name', 'Unknown') if isinstance(created_by, dict) else 'Unknown'
+
             story_data = {
-                'gid': story.get('gid'),
+                'gid': sgid,
                 'task_gid': task_gid,
                 'text': text,
-                'type': story.get('type'),
-                'created_by': story.get('created_by', {}).get('name', 'Unknown'),
-                'created_at': story.get('created_at'),
+                'type': stype,
+                'created_by': created_by_name,
+                'created_at': s_dict.get('created_at'),
                 'is_blocker': intelligence['is_blocker'],
                 'needs_intervention': intelligence['needs_intervention']
             }
@@ -232,7 +272,13 @@ class AsanaSyncEngine:
             {}
         )
         if response:
-            return [{"gid": w.get('gid'), "name": w.get('name')} for w in response]
+            results = []
+            for w in response:
+                gid = getattr(w, 'gid', w.get('gid') if isinstance(w, dict) else None)
+                name = getattr(w, 'name', w.get('name') if isinstance(w, dict) else None)
+                if gid and name:
+                    results.append({"gid": gid, "name": name})
+            return results
         return []
 
     def get_projects_in_workspace(self, workspace_gid: str) -> List[Dict]:
@@ -251,7 +297,13 @@ class AsanaSyncEngine:
             {}
         )
         if response:
-            return [{"gid": p.get('gid'), "name": p.get('name')} for p in response]
+            results = []
+            for p in response:
+                gid = getattr(p, 'gid', p.get('gid') if isinstance(p, dict) else None)
+                name = getattr(p, 'name', p.get('name') if isinstance(p, dict) else None)
+                if gid and name:
+                    results.append({"gid": gid, "name": name})
+            return results
         return []
 
 if __name__ == "__main__":

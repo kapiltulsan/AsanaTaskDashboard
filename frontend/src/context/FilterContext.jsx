@@ -91,16 +91,49 @@ export const FilterProvider = ({ children }) => {
     useEffect(() => {
         fetchTasks();
         fetchTiles();
+
+        // Trigger auto-sync on mount
+        handleSync();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const pollSyncStatus = async (attempts = 0) => {
+        // Safety break after 5 minutes (150 * 2s)
+        if (attempts > 150) {
+            console.warn("Sync polling timed out after 5 minutes.");
+            setSyncing(false);
+            return;
+        }
+
+        try {
+            const res = await api.get('/sync/status');
+            if (res.data.in_progress) {
+                // Keep polling
+                setTimeout(() => pollSyncStatus(attempts + 1), 2000);
+            } else {
+                setSyncing(false);
+                fetchTasks();
+                if (res.data.error) {
+                    console.error("Sync completed with error:", res.data.error);
+                    setError("Synchronization failed: " + res.data.error);
+                }
+            }
+        } catch (e) {
+            console.error("Polling error:", e);
+            // On persistent error, stop polling to avoid loop
+            setSyncing(false);
+        }
+    };
+
     const handleSync = async () => {
+        if (syncing) return;
         setSyncing(true);
         try {
             await api.post('/sync');
-            setTimeout(fetchTasks, 3000);
+            // Start polling for status
+            pollSyncStatus();
         } catch (e) {
             setError("Sync failed.");
-        } finally {
             setSyncing(false);
         }
     };

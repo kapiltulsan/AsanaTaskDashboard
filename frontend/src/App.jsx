@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Database, Settings as SettingsIcon, Filter, RefreshCw, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Database, Settings as SettingsIcon, Filter, RefreshCw, Search, X as XIcon } from 'lucide-react';
 import Dashboard from './pages/Dashboard';
 import DataGrid from './pages/DataGrid';
 import Settings from './pages/Settings';
@@ -16,13 +16,31 @@ import { useFilters } from './context/FilterContext';
  */
 const App = () => {
   const location = useLocation();
-  const { setIsFilterOverlayOpen, activeFilters, syncing, triggerSync } = useFilters();
+  const { setIsFilterOverlayOpen, activeFilters, syncing, triggerSync, searchQuery, setSearchQuery } = useFilters();
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 text-slate-900 font-sans select-none relative">
 
       {/* Global Filter Overlay */}
       <FilterOverlay />
+
+      {/* Global Sync Loading Indicator */}
+      {syncing && (
+        <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white/60 backdrop-blur-[2px] transition-all">
+          <div className="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex flex-col items-center gap-4">
+            <div className="relative">
+              <div className="w-12 h-12 border-4 border-indigo-100 border-t-indigo-600 rounded-full animate-spin" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <RefreshCw size={16} className="text-indigo-600 animate-pulse" />
+              </div>
+            </div>
+            <div className="text-center">
+              <h3 className="text-sm font-bold text-slate-900">Synchronizing Data</h3>
+              <p className="text-[11px] text-slate-500 font-medium">Fetching latest tasks from Asana...</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── TOP HEADER ───────────────────────────────────── */}
       <header className="h-14 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 z-50 shadow-sm">
@@ -43,6 +61,29 @@ const App = () => {
 
         {/* Right Controls */}
         <div className="flex items-center gap-3">
+
+          {/* Inline Search Bar */}
+          <div className="relative flex items-center">
+            <Search size={13} className="absolute left-3 text-slate-400 pointer-events-none" />
+            <input
+              id="input-header-search"
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Search tasks…"
+              className="pl-8 pr-7 py-1.5 w-48 text-xs border border-slate-200 rounded-lg bg-slate-50 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 focus:bg-white transition-all"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2 text-slate-400 hover:text-slate-600 transition-colors"
+                title="Clear search"
+              >
+                <XIcon size={12} />
+              </button>
+            )}
+          </div>
+
           {/* Filter Button */}
           <button
             onClick={() => setIsFilterOverlayOpen(true)}

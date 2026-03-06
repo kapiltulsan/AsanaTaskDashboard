@@ -1,6 +1,7 @@
 import os
 import subprocess
 import shutil
+import time
 
 def build_project():
     print("🚀 Starting Asana Sentinel Build Process...")
@@ -28,25 +29,36 @@ def build_project():
     # Step 2: Move React build to Backend static folder
     print("\n🚚 Moving static files to backend...")
     if os.path.exists(backend_static):
-        shutil.rmtree(backend_static)
+        # On Windows, sometimes shutil.rmtree fails if files are in use
+        # We try to clear it out multiple times or ignore errors if possible
+        try:
+            shutil.rmtree(backend_static)
+        except Exception:
+            # Fallback to manual deletion or ignoring errors
+            shutil.rmtree(backend_static, ignore_errors=True)
+            if os.path.exists(backend_static):
+                 time.sleep(1) # Wait a bit and hope lock releases
+                 shutil.rmtree(backend_static, ignore_errors=True)
         
-    shutil.copytree(frontend_dist, backend_static)
+    shutil.copytree(frontend_dist, backend_static, dirs_exist_ok=True)
 
     # Step 3: Run PyInstaller
     print("\n⚙️ Running PyInstaller...")
-    # NOTE: You'll need to modify backend/main.py slightly to mount the /static 
-    # folder to serve the React app in production, rather than relying on CORS
-    # and two separate servers.
+    
+    # Use the PyInstaller from the virtual environment
+    pyinstaller_exe = os.path.join(base_dir, "venv", "Scripts", "pyinstaller.exe")
+    if not os.path.exists(pyinstaller_exe):
+        pyinstaller_exe = "pyinstaller" # Fallback to global
     
     # We use --add-data to include the React build inside the executable.
     # On Windows, PyInstaller uses ';' as the separator for add-data.
     add_data_arg = f"{backend_static};static"
     
     pyinstaller_cmd = [
-        "pyinstaller",
+        pyinstaller_exe,
         "--noconfirm",
         "--name=AsanaSentinel",
-        "--onedir", # Use --onefile for a single massive exe, --onedir is generally safer/faster
+        "--onefile", # Bundle everything into a single .exe
         "--hidden-import=uvicorn.logging",
         "--hidden-import=uvicorn.loops",
         "--hidden-import=uvicorn.loops.auto",

@@ -28,6 +28,27 @@ try:
     else:
         print("display_order column already exists.")
 
+    print("Checking if smart_summary column exists in tasks...")
+    cursor.execute("PRAGMA table_info(tasks)")
+    task_columns = [row[1] for row in cursor.fetchall()]
+
+    if "smart_summary" not in task_columns:
+        print("Adding smart_summary column to tasks table...")
+        cursor.execute("ALTER TABLE tasks ADD COLUMN smart_summary TEXT")
+        conn.commit()
+        print("Column added successfully.")
+    else:
+        print("smart_summary column already exists.")
+
+    print("Checking if modified_at column exists in tasks...")
+    if "modified_at" not in task_columns:
+        print("Adding modified_at column to tasks table...")
+        cursor.execute("ALTER TABLE tasks ADD COLUMN modified_at TEXT")
+        conn.commit()
+        print("Column added successfully.")
+    else:
+        print("modified_at column already exists.")
+
 except Exception as e:
     print(f"Error during migration: {e}")
 finally:

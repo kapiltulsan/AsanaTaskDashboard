@@ -68,6 +68,8 @@ class DatabaseManager:
                         html_notes TEXT,
                         custom_fields TEXT,  -- JSON string
                         permalink_url TEXT,
+                        smart_summary TEXT,  -- AI-generated synthesis
+                        modified_at TEXT,    -- Asana modified_at timestamp
                         last_synced TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     )
                 ''')
@@ -166,8 +168,8 @@ class DatabaseManager:
         
         with self._get_connection() as conn:
             conn.execute('''
-                INSERT INTO tasks (gid, name, completed, assignee, due_on, priority, notes, html_notes, custom_fields, permalink_url, last_synced)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                INSERT INTO tasks (gid, name, completed, assignee, due_on, priority, notes, html_notes, custom_fields, permalink_url, modified_at, last_synced)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
                 ON CONFLICT(gid) DO UPDATE SET
                     name=excluded.name,
                     completed=excluded.completed,
@@ -178,6 +180,7 @@ class DatabaseManager:
                     html_notes=excluded.html_notes,
                     custom_fields=excluded.custom_fields,
                     permalink_url=excluded.permalink_url,
+                    modified_at=excluded.modified_at,
                     last_synced=CURRENT_TIMESTAMP
             ''', (
                 task_data.get('gid'),
@@ -189,7 +192,8 @@ class DatabaseManager:
                 task_data.get('notes'),
                 task_data.get('html_notes'),
                 custom_fields,
-                task_data.get('permalink_url')
+                task_data.get('permalink_url'),
+                task_data.get('modified_at')
             ))
             conn.commit()
 
@@ -204,6 +208,18 @@ class DatabaseManager:
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM tasks')
             return [dict(row) for row in cursor.fetchall()]
+
+    def update_task_summary(self, gid: str, summary: str):
+        """
+        Updates the AI-generated smart summary for a specific task.
+        
+        Args:
+            gid (str): The unique Asana Task ID.
+            summary (str): The text content of the summary.
+        """
+        with self._get_connection() as conn:
+            conn.execute('UPDATE tasks SET smart_summary = ? WHERE gid = ?', (summary, gid))
+            conn.commit()
 
     # ==================== STORIES ====================
 
@@ -251,6 +267,26 @@ class DatabaseManager:
             return [dict(row) for row in cursor.fetchall()]
 
     # ==================== SNAPSHOTS ====================
+    def create_snapshot(self, snapshot_data: dict):
+        """
+        Records a historical snapshot of project metrics for trend analysis.
+        
+        Args:
+            snapshot_data (dict): Dictionary with metrics (total_tasks, completed_tasks, etc.).
+        """
+        with self._get_connection() as conn:
+            conn.execute('''
+                INSERT INTO snapshots (total_tasks, completed_tasks, at_risk_tasks, improving, slow)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (
+                snapshot_data.get('total_tasks', 0),
+                snapshot_data.get('completed_tasks', 0),
+                snapshot_data.get('at_risk_tasks', 0),
+                snapshot_data.get('improving', False),
+                snapshot_data.get('slow', False)
+            ))
+            conn.commit()
+            logger.info("Trend snapshot created successfully.")
 
     # ==================== CUSTOM TILES ====================
 

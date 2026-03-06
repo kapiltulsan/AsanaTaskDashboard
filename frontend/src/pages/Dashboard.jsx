@@ -5,7 +5,7 @@ import { useFilters } from '../context/FilterContext';
 import TaskTable from '../components/TaskTable';
 
 const Dashboard = () => {
-    const { filteredTasks, loading, activeFilters, setIsFilterOverlayOpen, customTiles, tasks, matchesCriteria } = useFilters();
+    const { filteredTasks, loading, activeFilters, setIsFilterOverlayOpen, customTiles, tasks, matchesCriteria, setActiveFilters } = useFilters();
 
     const stats = useMemo(() => {
         const total = filteredTasks.length;
@@ -75,11 +75,19 @@ const Dashboard = () => {
 
                 {/* ── KPI Tiles ───────────────────────────────── */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <KpiCard label="Total Tasks" value={stats.total} icon={<FileText size={18} className="text-indigo-500" />} color="indigo" />
-                    <KpiCard label="Completed" value={stats.completed} icon={<CheckCircle2 size={18} className="text-emerald-500" />} color="emerald" />
-                    <KpiCard label="Active" value={stats.active} icon={<Activity size={18} className="text-sky-500" />} color="sky" />
+                    <KpiCard label="Total Tasks" value={stats.total} icon={<FileText size={18} className="text-indigo-500" />} color="indigo"
+                        onClick={() => setActiveFilters([])}
+                        tooltip="Click to clear all filters" />
+                    <KpiCard label="Completed" value={stats.completed} icon={<CheckCircle2 size={18} className="text-emerald-500" />} color="emerald"
+                        onClick={() => setActiveFilters([{ id: 'tile-completed', column: 'status', operator: 'is', values: ['completed'], isCustom: false }])}
+                        tooltip="Click to filter: Completed tasks" />
+                    <KpiCard label="Active" value={stats.active} icon={<Activity size={18} className="text-sky-500" />} color="sky"
+                        onClick={() => setActiveFilters([{ id: 'tile-active', column: 'status', operator: 'is', values: ['incomplete'], isCustom: false }])}
+                        tooltip="Click to filter: Active tasks" />
                     <KpiCard label="Completion %" value={`${stats.rate}%`} icon={<TrendingUp size={18} className="text-violet-500" />} color="violet" />
-                    <KpiCard label="At Risk" value={stats.atRisk} icon={<AlertTriangle size={18} className="text-amber-500" />} color="amber" warn={stats.atRisk > 0} />
+                    <KpiCard label="At Risk" value={stats.atRisk} icon={<AlertTriangle size={18} className="text-amber-500" />} color="amber" warn={stats.atRisk > 0}
+                        onClick={() => setActiveFilters([{ id: 'tile-atrisk', column: 'priority', operator: 'is', values: filteredTasks.map(t => t.priority).filter(p => p && (p.toLowerCase().includes('high') || p.toLowerCase().includes('critical'))).filter((v, i, a) => a.indexOf(v) === i), isCustom: false }])}
+                        tooltip="Click to filter: At-risk tasks" />
                     {/* Custom Tiles */}
                     {customTiles.slice(0, 1).map(tile => {
                         const count = tasks.filter(t => matchesCriteria(t, tile.criteria)).length;
@@ -131,19 +139,25 @@ const Dashboard = () => {
     );
 };
 
-const KpiCard = ({ label, value, icon, color, warn }) => {
+const KpiCard = ({ label, value, icon, color, warn, onClick, tooltip }) => {
     const colorMap = {
-        indigo: { bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-700' },
-        emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700' },
-        sky: { bg: 'bg-sky-50', border: 'border-sky-100', text: 'text-sky-700' },
-        violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-700' },
-        amber: { bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-700' },
-        rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-700' },
+        indigo: { bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-700', ring: 'ring-indigo-300' },
+        emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700', ring: 'ring-emerald-300' },
+        sky: { bg: 'bg-sky-50', border: 'border-sky-100', text: 'text-sky-700', ring: 'ring-sky-300' },
+        violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-700', ring: 'ring-violet-300' },
+        amber: { bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-700', ring: 'ring-amber-300' },
+        rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-700', ring: 'ring-rose-300' },
     };
     const c = colorMap[color] || colorMap.indigo;
+    const isClickable = !!onClick;
 
     return (
-        <div className={`bg-white rounded-xl border ${warn ? 'border-amber-200 shadow-amber-100' : 'border-slate-200'} p-4 shadow-sm hover:shadow-md transition-shadow`}>
+        <div
+            onClick={onClick}
+            title={tooltip}
+            className={`bg-white rounded-xl border ${warn ? 'border-amber-200 shadow-amber-100' : 'border-slate-200'} p-4 shadow-sm hover:shadow-md transition-all ${isClickable ? `cursor-pointer hover:ring-2 ${c.ring} hover:border-transparent active:scale-[0.97]` : ''
+                }`}
+        >
             <div className={`w-9 h-9 rounded-lg ${c.bg} ${c.border} border flex items-center justify-center mb-3`}>
                 {icon}
             </div>

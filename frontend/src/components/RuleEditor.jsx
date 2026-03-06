@@ -18,6 +18,7 @@ const RuleEditor = ({ filter, metadata, onUpdate, onRemove }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [openUpwards, setOpenUpwards] = useState(false);
     const triggerRef = useRef(null);
+    const dropdownContainerRef = useRef(null);
 
     /**
      * Effect hook to determine the optimal dropdown rendering direction.
@@ -35,6 +36,18 @@ const RuleEditor = ({ filter, metadata, onUpdate, onRemove }) => {
                 setOpenUpwards(false);
             }
         }
+    }, [isDropdownOpen]);
+
+    // Close value dropdown when clicking outside
+    useEffect(() => {
+        if (!isDropdownOpen) return;
+        const handler = (e) => {
+            if (dropdownContainerRef.current && !dropdownContainerRef.current.contains(e.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
     }, [isDropdownOpen]);
 
     const standardColumns = [
@@ -83,39 +96,47 @@ const RuleEditor = ({ filter, metadata, onUpdate, onRemove }) => {
             <div className="flex items-center gap-3">
                 <div className="w-1.5 h-full absolute left-0 top-0 bottom-0 bg-transparent group-hover/rule:bg-sky-400 rounded-l-lg transition-colors" />
 
-                <select
-                    value={filter.column}
-                    id={`select-rule-column-${filter.id}`}
-                    onChange={(e) => {
-                        const col = allColumns.find(c => c.id === e.target.value);
-                        onUpdate({ column: e.target.value, isCustom: col?.isCustom, values: [] });
-                    }}
-                    className="w-48 bg-slate-50 text-slate-700 text-sm font-medium border border-slate-300 focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 py-2 px-3 rounded-lg outline-none cursor-pointer hover:bg-white transition-colors"
-                >
-                    <optgroup label="Standard Fields">
-                        {standardColumns.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
-                    </optgroup>
-                    <optgroup label="Custom Fields" className="text-sky-600">
-                        {metadata.customFields.map(cf => <option key={cf.id} value={cf.id}>{cf.name}</option>)}
-                    </optgroup>
-                </select>
+                {/* Field select — styled wrapper */}
+                <div className="relative">
+                    <select
+                        value={filter.column}
+                        id={`select-rule-column-${filter.id}`}
+                        onChange={(e) => {
+                            const col = allColumns.find(c => c.id === e.target.value);
+                            onUpdate({ column: e.target.value, isCustom: col?.isCustom, values: [] });
+                        }}
+                        className="w-48 appearance-none bg-slate-50 text-slate-700 text-sm font-medium border border-slate-300 focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 py-2 pl-3 pr-8 rounded-lg outline-none cursor-pointer hover:bg-white transition-colors"
+                    >
+                        <optgroup label="Standard Fields">
+                            {standardColumns.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+                        </optgroup>
+                        <optgroup label="Custom Fields" className="text-sky-600">
+                            {metadata.customFields.map(cf => <option key={cf.id} value={cf.id}>{cf.name}</option>)}
+                        </optgroup>
+                    </select>
+                    <ChevronDown size={13} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                </div>
 
-                <select
-                    value={filter.operator}
-                    id={`select-rule-operator-${filter.id}`}
-                    onChange={(e) => onUpdate({ operator: e.target.value })}
-                    className="w-28 bg-white border border-slate-300 text-sm font-medium text-slate-700 cursor-pointer focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 py-2 px-3 rounded-lg outline-none hover:bg-slate-50 transition-colors"
-                >
-                    <option value="is">Is</option>
-                    <option value="is_not">Is Not</option>
-                </select>
+                {/* Operator select — styled wrapper */}
+                <div className="relative">
+                    <select
+                        value={filter.operator}
+                        id={`select-rule-operator-${filter.id}`}
+                        onChange={(e) => onUpdate({ operator: e.target.value })}
+                        className="w-28 appearance-none bg-white border border-slate-300 text-sm font-medium text-slate-700 cursor-pointer focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 py-2 pl-3 pr-8 rounded-lg outline-none hover:bg-slate-50 transition-colors"
+                    >
+                        <option value="is">Is</option>
+                        <option value="is_not">Is Not</option>
+                    </select>
+                    <ChevronDown size={13} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                </div>
 
                 <button onClick={onRemove} id={`btn-remove-rule-${filter.id}`} className="ml-auto p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500/20">
                     <Trash2 size={16} />
                 </button>
             </div>
 
-            <div className="relative mt-1">
+            <div className="relative mt-1" ref={dropdownContainerRef}>
                 <label className="text-xs font-semibold text-slate-600 mb-1.5 block">Value Constraints</label>
                 <div
                     ref={triggerRef}

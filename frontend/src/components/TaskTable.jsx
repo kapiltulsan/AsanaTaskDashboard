@@ -3,8 +3,9 @@ import {
     ArrowUp, ArrowDown, ChevronUp, ChevronDown,
     Settings2, Check, X, User, CheckCircle2, Circle, Clock,
     MessageSquare, ExternalLink, Layout, Calendar,
-    ChevronRight, FileText, AlertCircle, Tag, Briefcase,
-    TrendingUp, TrendingDown, Minus, Activity
+    ChevronRight, FileText, AlertCircle, Tag, Briefcase, Sparkles, RefreshCcw,
+    TrendingUp, TrendingDown, Minus, Activity, ShieldCheck, Zap, AlertTriangle,
+    History, Target, Route, ListFilter
 } from 'lucide-react';
 import { useFilters } from '../context/FilterContext';
 import api from '../api';
@@ -20,6 +21,7 @@ import api from '../api';
 const daysBetween = (dateA, dateB) => {
     const a = new Date(dateA);
     const b = new Date(dateB);
+    return Math.round((b - a) / (1000 * 60 * 60 * 24));
 };
 
 /**
@@ -48,12 +50,43 @@ const statusColor = (status) => {
     return 'bg-slate-50 text-slate-600 border-slate-200';
 };
 
+const SwotQuadrant = ({ title, items, icon, color }) => {
+    const colors = {
+        emerald: { bg: 'bg-emerald-50/50', border: 'border-emerald-100', text: 'text-emerald-700', iconBg: 'bg-emerald-100', iconText: 'text-emerald-600' },
+        rose: { bg: 'bg-rose-50/50', border: 'border-rose-100', text: 'text-rose-700', iconBg: 'bg-rose-100', iconText: 'text-rose-600' },
+        sky: { bg: 'bg-sky-50/50', border: 'border-sky-100', text: 'text-sky-700', iconBg: 'bg-sky-100', iconText: 'text-sky-600' },
+        amber: { bg: 'bg-amber-50/50', border: 'border-amber-100', text: 'text-amber-700', iconBg: 'bg-amber-100', iconText: 'text-amber-600' },
+    };
+    const c = colors[color] || colors.emerald;
+
+    return (
+        <div className={`${c.bg} border ${c.border} rounded-xl p-4 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow`}>
+            <div className="flex items-center gap-2 mb-3">
+                <div className={`w-6 h-6 rounded-md ${c.iconBg} ${c.iconText} flex items-center justify-center`}>
+                    {icon}
+                </div>
+                <h4 className={`text-[11px] font-bold uppercase tracking-wider ${c.text}`}>{title}</h4>
+            </div>
+            {items && items.length > 0 ? (
+                <ul className="space-y-2">
+                    {items.map((item, i) => (
+                        <li key={i} className="flex gap-2 text-[12px] text-slate-600 leading-tight">
+                            <span className={`mt-1.5 w-1 h-1 rounded-full ${c.iconBg} shrink-0`} />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p className="text-[11px] text-slate-400 italic">No {title.toLowerCase()} identified.</p>
+            )}
+        </div>
+    );
+};
+
 const healthConfig = {
     GREEN: { label: 'On Track', bg: 'bg-emerald-500', light: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-300' },
     AMBER: { label: 'At Risk', bg: 'bg-amber-500', light: 'bg-amber-50', text: 'text-amber-700', ring: 'ring-amber-300' },
     RED: { label: 'Delayed', bg: 'bg-red-500', light: 'bg-red-50', text: 'text-red-700', ring: 'ring-red-300' },
-};
-
 };
 
 // ── Extract status_card JSON from plain text notes ───────────────
@@ -69,14 +102,34 @@ const extractStatusCard = (notes) => {
     if (!notes) return null;
 
     // 1. Try to find a JSON block in the text
-    try {
-        const match = notes.match(/\{[\s\S]*"status_card"[\s\S]*\}/);
-        if (match) {
-            const parsed = JSON.parse(match[0]);
-            if (parsed.status_card) return parsed.status_card;
+    // 1. Try to find a JSON block in the text using balanced brace counting
+    const marker = '"status_card"';
+    let searchStart = 0;
+    while (true) {
+        const markerIdx = notes.indexOf(marker, searchStart);
+        if (markerIdx === -1) break;
+
+        // Find the opening brace of the object containing this marker or the parent
+        let openBraceIdx = notes.lastIndexOf('{', markerIdx);
+        if (openBraceIdx !== -1) {
+            let braceCount = 0;
+            for (let i = openBraceIdx; i < notes.length; i++) {
+                if (notes[i] === '{') braceCount++;
+                else if (notes[i] === '}') braceCount--;
+
+                if (braceCount === 0) {
+                    const jsonStr = notes.substring(openBraceIdx, i + 1);
+                    try {
+                        const parsed = JSON.parse(jsonStr);
+                        if (parsed.status_card) return parsed.status_card;
+                    } catch {
+                        // Fragment, keep searching
+                    }
+                    break;
+                }
+            }
         }
-    } catch {
-        // Fall through to tabular parsing if JSON parsing fails
+        searchStart = markerIdx + 1;
     }
 
     // 2. Try Tabular parsing (e.g. pasted from Excel)
@@ -136,8 +189,6 @@ const extractStatusCard = (notes) => {
     return null;
 };
 
-};
-
 // ── Extract Highlights and Updates JSON from stories ─────────────
 /**
  * Parses through a list of raw task stories/comments looking for injected
@@ -151,8 +202,9 @@ const extractHighlightsAndUpdates = (stories) => {
     (stories || []).forEach(story => {
         if (!story.text) return;
         try {
-            const match = story.text.match(/\{[\s\S]*"date"[\s\S]*\}/);
-            if (match) {
+        const matches = story.text.matchAll(/\{[\s\S]*?"date"[\s\S]*?\}/g);
+        for (const match of matches) {
+            try {
                 const parsed = JSON.parse(match[0]);
                 if (parsed.date && (parsed.highlights || parsed.updates)) {
                     extracted.push({
@@ -162,14 +214,15 @@ const extractHighlightsAndUpdates = (stories) => {
                         story_gid: story.gid
                     });
                 }
+            } catch {
+                // ignore parse errors for individual blocks
             }
+        }
         } catch {
             // ignore parse errors
         }
     });
     return extracted.sort((a, b) => new Date(b.date) - new Date(a.date));
-};
-
 };
 
 // ── Auto-derive health from phase variances ──────────────────────
@@ -185,8 +238,6 @@ const deriveHealth = (phases) => {
     if (maxVariance > 5) return 'RED';
     if (maxVariance > 0) return 'AMBER';
     return 'GREEN';
-};
-
 };
 
 // ── Error boundary to expose silent crashes ──────────────────────
@@ -338,7 +389,41 @@ const TaskTable = () => {
     const [selectedTask, setSelectedTask] = useState(null);
     const [selectedTaskStories, setSelectedTaskStories] = useState([]);
     const [loadingStories, setLoadingStories] = useState(false);
-    const [detailTab, setDetailTab] = useState('status'); // 'status' | 'activity'
+    const [aiSummary, setAiSummary] = useState(null);
+    const [aiSummaryLoading, setAiSummaryLoading] = useState(false);
+    const [detailTab, setDetailTab] = useState('status'); // 'status' | 'highlights' | 'updates' | 'overview'
+    const [pulseTab, setPulseTab] = useState('current'); // 'current' | 'previous' for the TPM Timeline Narrative
+
+    // Escape key closes the detail drawer
+    React.useEffect(() => {
+        if (!selectedTask) return;
+        const handler = (e) => { if (e.key === 'Escape') closePanel(); };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [selectedTask]);
+
+    const fetchAiSummary = async (taskId, force = false) => {
+        setAiSummaryLoading(true);
+        try {
+            const resp = await api.get(`/tasks/${taskId}/summary${force ? '?force=true' : ''}`);
+            if (resp.data.status === 'success') {
+                setAiSummary(resp.data.summary);
+            } else {
+                setAiSummary("Could not generate summary at this time.");
+            }
+        } catch (error) {
+            console.error('Failed to fetch AI summary:', error);
+            setAiSummary("Error connecting to AI service.");
+        } finally {
+            setAiSummaryLoading(false);
+        }
+    };
+
+    React.useEffect(() => {
+        if (selectedTask && detailTab === 'overview' && !aiSummary && !aiSummaryLoading) {
+            fetchAiSummary(selectedTask.gid);
+        }
+    }, [selectedTask, detailTab, aiSummary, aiSummaryLoading]);
 
     const allColumns = [
         { id: 'name', label: 'Task Name', type: 'system' },
@@ -395,6 +480,7 @@ const TaskTable = () => {
     const handleTaskClick = async (task) => {
         setSelectedTask(task);
         setSelectedTaskStories([]);
+        setAiSummary(null); // Clear AI summary when a new task is selected
         setDetailTab('status');
         setLoadingStories(true);
         try {
@@ -407,7 +493,10 @@ const TaskTable = () => {
         }
     };
 
-    const closePanel = () => setSelectedTask(null);
+    const closePanel = () => {
+        setSelectedTask(null);
+        setAiSummary(null);
+    };
 
     const renderCell = (task, columnId) => {
         if (columnId === 'name') return (
@@ -495,10 +584,14 @@ const TaskTable = () => {
                             <tbody className="divide-y divide-slate-50">
                                 {filteredTasks.length > 0 ? filteredTasks.map(task => (
                                     <tr key={task.gid} id={`row-task-${task.gid}`} onClick={() => handleTaskClick(task)}
-                                        className={`hover:bg-indigo-50/40 transition-all duration-100 cursor-pointer border-l-2 ${selectedTask?.gid === task.gid ? 'bg-indigo-50/60 border-l-indigo-500' : 'border-l-transparent'}`}>
+                                        className={`hover:bg-indigo-50/40 transition-all duration-100 cursor-pointer border-l-2 group ${selectedTask?.gid === task.gid ? 'bg-indigo-50/60 border-l-indigo-500' : 'border-l-transparent'}`}>
                                         {orderedVisibleCols.map((colId, index) => (
                                             <td key={colId} className={`px-4 py-3 ${index === 0 ? 'pl-5' : ''}`}>{renderCell(task, colId)}</td>
                                         ))}
+                                        {/* Row expand affordance */}
+                                        <td className="pr-4 w-6">
+                                            <ChevronRight size={14} className="text-slate-300 group-hover:text-indigo-400 transition-colors" />
+                                        </td>
                                     </tr>
                                 )) : (
                                     <tr><td colSpan={orderedVisibleCols.length} className="py-20 text-center">
@@ -574,13 +667,7 @@ const TaskTable = () => {
                                 </span>
                             </div>
                             <div className="flex items-center gap-2 shrink-0 ml-4">
-                                {selectedTask.permalink_url && (
-                                    <a href={selectedTask.permalink_url} target="_blank" rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all">
-                                        <ExternalLink size={12} /> Open in Asana
-                                    </a>
-                                )}
-                                <button onClick={closePanel} id="panel-detail-close" className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/80 hover:text-white">
+                                <button onClick={closePanel} id="panel-detail-close" className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/80 hover:text-white" title="Close (Esc)">
                                     <X size={18} />
                                 </button>
                             </div>
@@ -592,10 +679,14 @@ const TaskTable = () => {
                                 { id: 'status', label: 'Project Status', badge: statusCard ? '✓' : null },
                                 { id: 'highlights', label: `Highlights (${highlightsCount})` },
                                 { id: 'updates', label: `Updates (${updatesCount})` },
+                                { id: 'overview', label: 'Overview' },
                             ].map(tab => (
                                 <button
                                     key={tab.id}
-                                    onClick={() => setDetailTab(tab.id)}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setDetailTab(tab.id);
+                                    }}
                                     className={`flex items-center gap-1.5 px-4 py-3 text-xs font-semibold border-b-2 transition-all ${detailTab === tab.id
                                         ? 'border-indigo-600 text-indigo-700'
                                         : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -620,6 +711,20 @@ const TaskTable = () => {
                                 {selectedTask.cfMap && Object.entries(selectedTask.cfMap).filter(([, v]) => v).map(([k, v]) => (
                                     <MetaCard key={k} icon={<Tag size={13} className="text-slate-400" />} label={k} value={String(v)} />
                                 ))}
+                                {/* Open in Asana — moved here for visibility */}
+                                {selectedTask.permalink_url && (
+                                    <div className="pt-2 border-t border-slate-200">
+                                        <a
+                                            href={selectedTask.permalink_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-all"
+                                        >
+                                            <ExternalLink size={13} />
+                                            Open in Asana
+                                        </a>
+                                    </div>
+                                )}
                             </div>
 
                             {/* RIGHT: tabbed content */}
@@ -731,6 +836,173 @@ const TaskTable = () => {
                                         )}
                                     </div>
                                 )}
+                                {/* OVERVIEW TAB */}
+                                {detailTab === 'overview' && (
+                                    <div className="animate-fade-in space-y-8">
+                                        {/* SMART AI SUMMARY SECTION */}
+                                        <div className="bg-indigo-50/30 rounded-2xl border border-indigo-100/50 p-6 relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 p-4">
+                                                <Sparkles size={40} className="text-indigo-500/10 -rotate-12" />
+                                            </div>
+
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-indigo-200 shadow-lg">
+                                                        <Sparkles size={14} className="text-white" />
+                                                    </div>
+                                                    <span className="text-sm font-bold text-slate-800 tracking-tight">Executive Smart Summary</span>
+                                                </div>
+                                                <button
+                                                    onClick={() => fetchAiSummary(selectedTask.gid, true)}
+                                                    disabled={aiSummaryLoading}
+                                                    className="p-1.5 hover:bg-white rounded-lg transition-all text-slate-400 hover:text-indigo-600 disabled:opacity-40"
+                                                    title="Regenerate Summary"
+                                                >
+                                                    <RefreshCcw size={14} className={aiSummaryLoading ? 'animate-spin' : ''} />
+                                                </button>
+                                            </div>
+
+                                            {aiSummaryLoading ? (
+                                                <div className="flex flex-col gap-3 py-2">
+                                                    {[1, 2, 3, 4].map(i => (
+                                                        <div key={i} className="h-3 bg-slate-200/50 rounded animate-pulse" style={{ width: `${80 + Math.random() * 20}%` }} />
+                                                    ))}
+                                                </div>
+                                            ) : (aiSummary && typeof aiSummary === 'object' && aiSummary.pulse) ? (
+                                                <div className="space-y-6 relative z-10">
+                                                    {/* [Container 1: Timeline Narrative] */}
+                                                    <div className="bg-white/80 backdrop-blur-md border border-indigo-100 rounded-2xl shadow-sm overflow-hidden">
+                                                        <div className="flex bg-slate-50/50 p-1 border-b border-slate-100">
+                                                            <button 
+                                                                onClick={() => setPulseTab('current')}
+                                                                className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold transition-all ${pulseTab === 'current' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                                                            >
+                                                                <Activity size={13} />
+                                                                Current Pulse (0-8d)
+                                                            </button>
+                                                            <button 
+                                                                onClick={() => setPulseTab('previous')}
+                                                                className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold transition-all ${pulseTab === 'previous' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                                                            >
+                                                                <History size={13} />
+                                                                Previous Context (9-15d)
+                                                            </button>
+                                                        </div>
+                                                        <div className="p-5">
+                                                            <ul className="space-y-3">
+                                                                {(pulseTab === 'current' ? (aiSummary.pulse?.current || []) : (aiSummary.pulse?.previous || [])).map((text, i) => (
+                                                                    <li key={i} className="flex gap-3 text-[13px] leading-relaxed text-slate-700">
+                                                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 shadow-sm" />
+                                                                        <span>{text}</span>
+                                                                    </li>
+                                                                ))}
+                                                                {((pulseTab === 'current' ? aiSummary.pulse?.current : aiSummary.pulse?.previous) || []).length === 0 && (
+                                                                    <li className="text-[13px] text-slate-400 italic text-center py-2">No data recorded for this window.</li>
+                                                                )}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                        {/* [Container 2: Impact Board] */}
+                                                        <div className="space-y-4">
+                                                            <div className="flex items-center gap-2 px-1">
+                                                                <Target size={14} className="text-slate-500" />
+                                                                <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Impact Board</span>
+                                                            </div>
+                                                            <div className="grid grid-cols-1 gap-3">
+                                                                <div className="bg-emerald-50/50 border border-emerald-100/50 rounded-xl p-4">
+                                                                    <div className="flex items-center gap-2 mb-3">
+                                                                        <div className="w-5 h-5 rounded bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                                                                            <CheckCircle2 size={12} />
+                                                                        </div>
+                                                                        <span className="text-[11px] font-bold text-emerald-700 uppercase">Wins</span>
+                                                                    </div>
+                                                                    <ul className="space-y-2">
+                                                                        {(aiSummary.impact?.wins || []).map((win, i) => (
+                                                                            <li key={i} className="text-[12px] text-slate-600 flex gap-2">
+                                                                                <span className="text-emerald-500 mt-0.5">•</span>
+                                                                                {win}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                                <div className="bg-rose-50/50 border border-rose-100/50 rounded-xl p-4">
+                                                                    <div className="flex items-center gap-2 mb-3">
+                                                                        <div className="w-5 h-5 rounded bg-rose-100 text-rose-600 flex items-center justify-center">
+                                                                            <AlertCircle size={12} />
+                                                                        </div>
+                                                                        <span className="text-[11px] font-bold text-rose-700 uppercase">Losses / Slips</span>
+                                                                    </div>
+                                                                    <ul className="space-y-2">
+                                                                        {(aiSummary.impact?.losses || []).map((loss, i) => (
+                                                                            <li key={i} className="text-[12px] text-slate-600 flex gap-2">
+                                                                                <span className="text-rose-500 mt-0.5">•</span>
+                                                                                {loss}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* [Container 3: Critical Path] */}
+                                                        <div className="space-y-4">
+                                                            <div className="flex items-center gap-2 px-1">
+                                                                <Route size={14} className="text-slate-500" />
+                                                                <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Strategic Identifiers</span>
+                                                            </div>
+                                                            <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-5">
+                                                                <div>
+                                                                    <div className="flex items-center justify-between mb-2">
+                                                                        <div className="flex items-center gap-2">
+                                                                            <ListFilter size={12} className="text-slate-400" />
+                                                                            <span className="text-[11px] font-bold text-slate-500 uppercase">Dependencies</span>
+                                                                        </div>
+                                                                        <span className="px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold">Structural</span>
+                                                                    </div>
+                                                                    <ul className="space-y-2">
+                                                                        {(aiSummary.critical_path?.dependencies || []).map((dep, i) => (
+                                                                            <li key={i} className="text-[12px] text-slate-600 flex gap-2">
+                                                                                <div className="w-1 h-1 rounded-full bg-slate-300 mt-1.5 shrink-0" />
+                                                                                {dep}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                                <div className="pt-4 border-t border-slate-100">
+                                                                    <div className="flex items-center justify-between mb-2">
+                                                                        <div className="flex items-center gap-2">
+                                                                            <AlertTriangle size={12} className="text-amber-500" />
+                                                                            <span className="text-[11px] font-bold text-slate-500 uppercase">Strategic Risks</span>
+                                                                        </div>
+                                                                        <span className="px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">High Priority</span>
+                                                                    </div>
+                                                                    <ul className="space-y-2">
+                                                                        {(aiSummary.critical_path?.risks || []).map((risk, i) => (
+                                                                            <li key={i} className="text-[12px] text-slate-600 flex gap-2">
+                                                                                <div className="w-1 h-1 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                                                                                {risk}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : aiSummary ? (
+                                                <div className="bg-white/60 backdrop-blur-sm border border-slate-200 rounded-xl p-6 text-center">
+                                                    <p className="text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+                                                        {typeof aiSummary === 'string' ? aiSummary : "Analysis results are being formatted for the new executive view. Please try regenerating."}
+                                                    </p>
+                                                </div>
+                                            ) : null}
+                                        </div>
+
+                                    </div>
+                                )}
+
                             </div>
                         </div>
                     </div>

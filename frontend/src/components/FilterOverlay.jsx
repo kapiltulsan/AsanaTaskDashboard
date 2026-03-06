@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Plus, Search, Trash2, ChevronDown, CheckCircle, Info, Filter as FilterIcon } from 'lucide-react';
 import RuleEditor from './RuleEditor';
 import { useFilters } from '../context/FilterContext';
@@ -22,6 +22,14 @@ const FilterOverlay = () => {
         setActiveFilters,
         filterMetadata
     } = useFilters();
+
+    // Escape key closes the overlay
+    useEffect(() => {
+        if (!isFilterOverlayOpen) return;
+        const handler = (e) => { if (e.key === 'Escape') setIsFilterOverlayOpen(false); };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [isFilterOverlayOpen]);
 
     if (!isFilterOverlayOpen) return null;
 
@@ -91,6 +99,7 @@ const FilterOverlay = () => {
                         <input
                             type="text"
                             id="input-keyword-search"
+                            autoFocus
                             placeholder="Search by task name (e.g., 'API', 'UI', 'Bug')..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}

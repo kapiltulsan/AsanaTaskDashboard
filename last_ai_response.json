@@ -1,0 +1,30 @@
+{
+  "pulse": {
+    "current": [
+      "Completed the authentication module.",
+      "Resolved critical production bug #1029.",
+      "Testing phase for the new UI is ongoing.",
+      "Waiting for feedback from the design team."
+    ],
+    "previous": []
+  },
+  "impact": {
+    "wins": [
+      "Solutioning / IRM phase completed"
+    ],
+    "losses": [
+      "Overall project delayed by 1 month (estimated go-live: 2026-04-31 vs planned go-live: 2026-03-31)",
+      "SIT / UAT / IRM phase est_end is 9 days behind plan_end",
+       "BN / Comm. Signoff phase est_end is 1 day behind plan_end",
+       "PMO / Dev. / Config phase est_end is 1 day behind plan_end"
+    ]
+  },
+  "critical_path": {
+    "dependencies": [
+      "Testing phase for the new UI is waiting for feedback from the design team."
+    ],
+    "risks": [
+      "Estimated go-live date slipped to 2026-04-31 from the planned 2026-03-31."
+    ]
+  }
+}
